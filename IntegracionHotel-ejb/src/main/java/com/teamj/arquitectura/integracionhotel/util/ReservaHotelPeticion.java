@@ -13,7 +13,9 @@ import java.util.List;
  * @author RICARDO
  */
 public class ReservaHotelPeticion {
-    private String codigoHotel;
+    private Integer codigoHotel;
+    private String identificacion;
+    private String nombreUsuario;
     private List<Integer> codigosHabitacion;
     private Date fechaEntrada;
     private Date fechaSalida;
@@ -21,21 +23,40 @@ public class ReservaHotelPeticion {
     public ReservaHotelPeticion() {
     }
 
-    public ReservaHotelPeticion(String codigoHotel, List<Integer> codigosHabitacion, Date fechaEntrada, Date fechaSalida) {
+    public ReservaHotelPeticion(Integer codigoHotel, String identificacion, String nombreUsuario, List<Integer> codigosHabitacion, Date fechaEntrada, Date fechaSalida) {
         this.codigoHotel = codigoHotel;
+        this.identificacion = identificacion;
+        this.nombreUsuario = nombreUsuario;
         this.codigosHabitacion = codigosHabitacion;
         this.fechaEntrada = fechaEntrada;
         this.fechaSalida = fechaSalida;
     }
-    
-    public String getCodigoHotel() {
+
+    public Integer getCodigoHotel() {
         return codigoHotel;
     }
 
-    public void setCodigoHotel(String codigoHotel) {
+    public void setCodigoHotel(Integer codigoHotel) {
         this.codigoHotel = codigoHotel;
     }
 
+
+    public String getIdentificacion() {
+        return identificacion;
+    }
+
+    public void setIdentificacion(String identificacion) {
+        this.identificacion = identificacion;
+    }
+
+    public String getNombreUsuario() {
+        return nombreUsuario;
+    }
+
+    public void setNombreUsuario(String nombreUsuario) {
+        this.nombreUsuario = nombreUsuario;
+    }
+    
     public List<Integer> getCodigosHabitacion() {
         return codigosHabitacion;
     }

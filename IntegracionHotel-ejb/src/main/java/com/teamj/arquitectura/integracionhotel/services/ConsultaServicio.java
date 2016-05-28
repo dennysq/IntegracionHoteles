@@ -34,7 +34,6 @@ public class ConsultaServicio {
     private EmpresaDAO empresaDAO;
 
     public List<ConsultaHotelesResponse> consultaHotel(ConsultaHotelesRequest con) {
-        boolean flag = false;
         List<Empresa> listaEmpresas = new ArrayList<>();
         Empresa empresa=new Empresa();
         

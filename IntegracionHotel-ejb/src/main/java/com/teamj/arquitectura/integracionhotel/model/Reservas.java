@@ -42,13 +42,17 @@ public class Reservas implements Serializable {
     @Temporal(TemporalType.TIMESTAMP)
     private Date timestamp;
     
+    @Column(name = "FECHA_ENTRADA")
+    @Temporal(TemporalType.TIMESTAMP)
+    private Date fechaEntrada;
+
+    @Column(name = "FECHA_SALIDA")
+    @Temporal(TemporalType.TIMESTAMP)
+    private Date fechaSalida;
+    
     @Size(min = 1, max = 20)
     @Column(name = "ORIGEN_R", length = 20)
     private String origen;
-    
-    @Size(min = 1, max = 20)
-    @Column(name = "USUARIO_R", length = 20)
-    private String usuario;
     
     @Column(name = "PRECIO_TOTAL_R", precision = 8, scale = 2)
     private BigDecimal precioTotal;
@@ -59,6 +63,8 @@ public class Reservas implements Serializable {
     @JoinColumn(name = "CODIGO_E", referencedColumnName = "CODIGO_E")
     @ManyToOne
     private Empresa codigoEmpresa;
+    
+    
 
    
     public Integer getId() {
@@ -85,12 +91,20 @@ public class Reservas implements Serializable {
         this.origen = origen;
     }
 
-    public String getUsuario() {
-        return usuario;
+    public Date getFechaEntrada() {
+        return fechaEntrada;
     }
 
-    public void setUsuario(String usuario) {
-        this.usuario = usuario;
+    public void setFechaEntrada(Date fechaEntrada) {
+        this.fechaEntrada = fechaEntrada;
+    }
+
+    public Date getFechaSalida() {
+        return fechaSalida;
+    }
+
+    public void setFechaSalida(Date fechaSalida) {
+        this.fechaSalida = fechaSalida;
     }
 
     public BigDecimal getPrecioTotal() {
@@ -144,9 +158,7 @@ public class Reservas implements Serializable {
 
     @Override
     public String toString() {
-        return "Reservas{" + "id=" + id + ", timestamp=" + timestamp + ", origen=" + origen + ", usuario=" + usuario + ", precioTotal=" + precioTotal + ", numReserva=" + numReserva + ", codigoEmpresa=" + codigoEmpresa + '}';
+        return "Reservas{" + "id=" + id + ", timestamp=" + timestamp + ", fechaEntrada=" + fechaEntrada + ", fechaSalida=" + fechaSalida + ", origen=" + origen + ", precioTotal=" + precioTotal + ", numReserva=" + numReserva + ", codigoEmpresa=" + codigoEmpresa + '}';
     }
 
-    
-    
 }
