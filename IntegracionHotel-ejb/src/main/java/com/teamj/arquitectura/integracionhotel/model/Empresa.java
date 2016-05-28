@@ -66,7 +66,7 @@ public class Empresa implements Serializable {
     private String descripcion;
 
     @OneToMany(mappedBy = "codigoEmpresa")
-    private List<Consultas> consultas;
+    private List<Consulta> consultas;
 
     @OneToMany(mappedBy = "codigoEmpresa")
     private List<Reservas> reservas;
@@ -135,11 +135,11 @@ public class Empresa implements Serializable {
         this.descripcion = descripcion;
     }
 
-    public List<Consultas> getConsultas() {
+    public List<Consulta> getConsultas() {
         return consultas;
     }
 
-    public void setConsultas(List<Consultas> consultas) {
+    public void setConsultas(List<Consulta> consultas) {
         this.consultas = consultas;
     }
 

@@ -30,7 +30,7 @@ import javax.validation.constraints.Size;
  */
 @Entity
 @Table(name = "consultas")
-public class Consultas implements Serializable {
+public class Consulta implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -57,10 +57,10 @@ public class Consultas implements Serializable {
     @ManyToOne
     private Empresa codigoEmpresa;
 
-    public Consultas() {
+    public Consulta() {
     }
 
-    public Consultas(Integer id) {
+    public Consulta(Integer id) {
         this.id = id;
     }
 
@@ -130,7 +130,7 @@ public class Consultas implements Serializable {
         if (getClass() != obj.getClass()) {
             return false;
         }
-        final Consultas other = (Consultas) obj;
+        final Consulta other = (Consulta) obj;
         if (!Objects.equals(this.id, other.id)) {
             return false;
         }

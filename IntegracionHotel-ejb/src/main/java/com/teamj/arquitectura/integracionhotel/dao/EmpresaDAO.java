@@ -6,7 +6,7 @@
 package com.teamj.arquitectura.integracionhotel.dao;
 
 import com.persist.common.dao.DefaultGenericDAOImple;
-import com.teamj.arquitectura.integracionhotel.model.Consultas;
+import com.teamj.arquitectura.integracionhotel.model.Consulta;
 import com.teamj.arquitectura.integracionhotel.model.Empresa;
 import javax.ejb.LocalBean;
 import javax.ejb.Stateless;

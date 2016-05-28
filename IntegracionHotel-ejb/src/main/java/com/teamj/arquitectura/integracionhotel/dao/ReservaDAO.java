@@ -6,7 +6,8 @@
 package com.teamj.arquitectura.integracionhotel.dao;
 
 import com.persist.common.dao.DefaultGenericDAOImple;
-import com.teamj.arquitectura.integracionhotel.model.Consultas;
+import com.teamj.arquitectura.integracionhotel.model.Empresa;
+import com.teamj.arquitectura.integracionhotel.model.Reservas;
 import javax.ejb.LocalBean;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
@@ -18,10 +19,10 @@ import javax.persistence.PersistenceContext;
  */
 @LocalBean
 @Stateless
-public class ConsultasDAO extends DefaultGenericDAOImple<Consultas, Integer>  {
+public class ReservaDAO extends DefaultGenericDAOImple<Reservas, Integer> {
 
-      public ConsultasDAO() {
-        super(Consultas.class);
+    public ReservaDAO() {
+        super(Reservas.class);
     }
-    
+
 }
