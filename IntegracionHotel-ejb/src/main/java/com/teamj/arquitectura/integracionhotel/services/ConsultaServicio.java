@@ -6,7 +6,9 @@
 package com.teamj.arquitectura.integracionhotel.services;
 
 import com.teamj.arquitectura.integracionhotel.dao.ConsultaDAO;
+import com.teamj.arquitectura.integracionhotel.dao.EmpresaDAO;
 import com.teamj.arquitectura.integracionhotel.model.Consulta;
+import com.teamj.arquitectura.integracionhotel.model.Empresa;
 import com.teamj.arquitectura.integracionhotel.util.ConsultaHotelesRequest;
 import com.teamj.arquitectura.integracionhotel.util.ConsultaHotelesResponse;
 import com.teamj.arquitectura.integracionhotel.util.Habitacion;
@@ -28,8 +30,37 @@ public class ConsultaServicio {
     @EJB
     private ConsultaDAO consultaDAO;
 
+    @EJB
+    private EmpresaDAO empresaDAO;
+
     public List<ConsultaHotelesResponse> consultaHotel(ConsultaHotelesRequest con) {
         boolean flag = false;
+        List<Empresa> listaEmpresas = new ArrayList<>();
+        Empresa empresa=new Empresa();
+        
+        empresa.setCiudad("Manta");
+        listaEmpresas=empresaDAO.find(empresa);
+        
+        if (listaEmpresas.size()>0) {
+            System.out.println(""+listaEmpresas);
+            Consulta consulta=new Consulta();
+            consulta.setCodigoEmpresa(listaEmpresas.get(0));
+            consulta.setDestino(listaEmpresas.get(0).getNombre());
+            consulta.setOrigen(con.getNombreUsuario());
+            consulta.setConsulta("Pruebas");
+            consultaDAO.insert(consulta);
+        }
+        
+        
+//        con.setFechaEntrada("");
+//        con.setFechaSalida("");
+//        con.setCiudad("");
+//        con.setNumHabitaciones("");
+//        con.setTotalPersonas("");
+//        con.setDesayunoIncluido("");
+
+        //llamar al web service de la dalia
+        
 
         ConsultaHotelesResponse consultaResponse = new ConsultaHotelesResponse();
         Habitacion hab1 = new Habitacion();
@@ -55,15 +86,11 @@ public class ConsultaServicio {
 
         respuestaConsulta.add(consultaResponse);
    
-//        con.setFechaEntrada("");
-//        con.setFechaSalida("");
-//        con.setCiudad("");
-//        con.setNumHabitaciones("");
-//        con.setTotalPersonas("");
-//        con.setDesayunoIncluido("");
 
         
         return respuestaConsulta;
     }
+    
+    
 
 }

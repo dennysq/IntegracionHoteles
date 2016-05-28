@@ -41,10 +41,6 @@ public class Empresa implements Serializable {
     @Column(name = "NOMBRE_E", length = 128)
     private String nombre;
 
-    @Size(min = 1, max = 20)
-    @Column(name = "TIPO_E", length = 20)
-    private String tipo;
-
     @Size(max = 256)
     @Column(name = "SITO_WEB_E", length = 256)
     private String sitoWeb;
@@ -85,14 +81,6 @@ public class Empresa implements Serializable {
 
     public void setNombre(String nombre) {
         this.nombre = nombre;
-    }
-
-    public String getTipo() {
-        return tipo;
-    }
-
-    public void setTipo(String tipo) {
-        this.tipo = tipo;
     }
 
     public String getSitoWeb() {
@@ -178,7 +166,7 @@ public class Empresa implements Serializable {
 
     @Override
     public String toString() {
-        return "Empresa{" + "id=" + id + ", nombre=" + nombre + ", tipo=" + tipo + ", sitoWeb=" + sitoWeb + ", created=" + created + ", email=" + email + ", ciudad=" + ciudad + ", descripcion=" + descripcion + ", consultas=" + consultas + ", reservas=" + reservas + '}';
+        return "Empresa{" + "id=" + id + ", nombre=" + nombre + ", sitoWeb=" + sitoWeb + ", created=" + created + ", email=" + email + ", ciudad=" + ciudad + ", descripcion=" + descripcion + ", consultas=" + consultas + ", reservas=" + reservas + '}';
     }
 
     

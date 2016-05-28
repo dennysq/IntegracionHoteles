@@ -20,7 +20,9 @@ public class ConsultaHotelesRequest {
     private Integer totalPersonas;
     private Integer numHabitaciones;
     private String ciudad;
+    private String nombreUsuario;
     private boolean desayunoIncluido;
+    
 
     public ConsultaHotelesRequest() {
     }
@@ -74,6 +76,15 @@ public class ConsultaHotelesRequest {
         this.ciudad = ciudad;
     }
 
+    public String getNombreUsuario() {
+        return nombreUsuario;
+    }
+
+    public void setNombreUsuario(String nombreUsuario) {
+        this.nombreUsuario = nombreUsuario;
+    }
+
+    
     public boolean isDesayunoIncluido() {
         return desayunoIncluido;
     }
