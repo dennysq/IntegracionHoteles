@@ -6,7 +6,6 @@
 package com.teamj.arquitectura.integracionhotel.util;
 
 import java.math.BigDecimal;
-import java.util.List;
 import javax.xml.bind.annotation.XmlType;
 
 /**
@@ -18,9 +17,11 @@ public class ConsultaHotelesResponse {
 
     private Integer codigoHotel;
     private String nombreHotel;
-    private List<Habitacion> habitaciones;
     private BigDecimal cotizacion;
-
+    private Integer codigoHabitacion;
+    private BigDecimal precioHabitacion;
+    private String tipoHabitacion;
+    
     public ConsultaHotelesResponse() {
     }
 
@@ -40,19 +41,35 @@ public class ConsultaHotelesResponse {
         this.nombreHotel = nombreHotel;
     }
 
-    public List<Habitacion> getHabitaciones() {
-        return habitaciones;
-    }
-
-    public void setHabitaciones(List<Habitacion> habitaciones) {
-        this.habitaciones = habitaciones;
-    }
-
     public BigDecimal getCotizacion() {
         return cotizacion;
     }
 
     public void setCotizacion(BigDecimal cotizacion) {
         this.cotizacion = cotizacion;
+    }
+
+    public Integer getCodigoHabitacion() {
+        return codigoHabitacion;
+    }
+
+    public void setCodigoHabitacion(Integer codigoHabitacion) {
+        this.codigoHabitacion = codigoHabitacion;
+    }
+
+    public BigDecimal getPrecioHabitacion() {
+        return precioHabitacion;
+    }
+
+    public void setPrecioHabitacion(BigDecimal precioHabitacion) {
+        this.precioHabitacion = precioHabitacion;
+    }
+
+    public String getTipoHabitacion() {
+        return tipoHabitacion;
+    }
+
+    public void setTipoHabitacion(String tipoHabitacion) {
+        this.tipoHabitacion = tipoHabitacion;
     }
 }

@@ -6,12 +6,9 @@
 package com.teamj.arquitectura.integracionhotel.dao;
 
 import com.persist.common.dao.DefaultGenericDAOImple;
-import com.teamj.arquitectura.integracionhotel.model.Consulta;
 import com.teamj.arquitectura.integracionhotel.model.Empresa;
 import javax.ejb.LocalBean;
 import javax.ejb.Stateless;
-import javax.persistence.EntityManager;
-import javax.persistence.PersistenceContext;
 
 /**
  *
@@ -20,9 +17,7 @@ import javax.persistence.PersistenceContext;
 @LocalBean
 @Stateless
 public class EmpresaDAO extends DefaultGenericDAOImple<Empresa, Integer> {
-
     public EmpresaDAO() {
         super(Empresa.class);
     }
-
 }

@@ -5,7 +5,7 @@
  */
 package com.teamj.arquitectura.integracionhotel.util;
 
-import java.util.Date;
+
 import javax.xml.bind.annotation.XmlType;
 
 /**
@@ -15,8 +15,8 @@ import javax.xml.bind.annotation.XmlType;
 @XmlType(name = "consultahotelesrequest2")
 public class ConsultaHotelesRequest {
 
-    private Date fechaEntrada;
-    private Date fechaSalida;
+    private String fechaEntrada;
+    private String fechaSalida;
     private Integer totalPersonas;
     private Integer numHabitaciones;
     private String ciudad;
@@ -27,30 +27,22 @@ public class ConsultaHotelesRequest {
     public ConsultaHotelesRequest() {
     }
 
-    public ConsultaHotelesRequest(Date fechaEntrada, Date fechaSalida, Integer totalPersonas, Integer numHabitaciones, String ciudad, boolean desayunoIncluido) {
-        this.fechaEntrada = fechaEntrada;
-        this.fechaSalida = fechaSalida;
-        this.totalPersonas = totalPersonas;
-        this.numHabitaciones = numHabitaciones;
-        this.ciudad = ciudad;
-        this.desayunoIncluido = desayunoIncluido;
-    }
-
-    public Date getFechaEntrada() {
+    public String getFechaEntrada() {
         return fechaEntrada;
     }
 
-    public void setFechaEntrada(Date fechaEntrada) {
+    public void setFechaEntrada(String fechaEntrada) {
         this.fechaEntrada = fechaEntrada;
     }
 
-    public Date getFechaSalida() {
+    public String getFechaSalida() {
         return fechaSalida;
     }
 
-    public void setFechaSalida(Date fechaSalida) {
+    public void setFechaSalida(String fechaSalida) {
         this.fechaSalida = fechaSalida;
     }
+
 
     public Integer getTotalPersonas() {
         return totalPersonas;
