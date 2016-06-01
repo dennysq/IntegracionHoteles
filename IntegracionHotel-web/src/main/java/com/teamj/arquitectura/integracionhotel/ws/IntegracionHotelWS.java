@@ -7,6 +7,8 @@ package com.teamj.arquitectura.integracionhotel.ws;
 
 import com.teamj.arquitectura.integracionhotel.util.ConsultaHotelesRequest;
 import com.teamj.arquitectura.integracionhotel.util.ConsultaHotelesResponse;
+import com.teamj.arquitectura.integracionhotel.util.ReservaHotelPeticion;
+import com.teamj.arquitectura.integracionhotel.util.ReservaHotelRespuesta;
 import java.util.List;
 import javax.ejb.EJB;
 import javax.jws.WebMethod;
@@ -27,6 +29,10 @@ public class IntegracionHotelWS {
     @WebMethod(operationName = "consulta")
     public List<ConsultaHotelesResponse> consulta(@WebParam(name = "parametrosBusqueda") ConsultaHotelesRequest consulta) {
         return ejbRef.consultaHotel(consulta);
+    }
+    @WebMethod(operationName = "reservar")
+    public ReservaHotelRespuesta reservar(@WebParam(name = "parametrosReserva") ReservaHotelPeticion reserva) {
+        return ejbRef.reservar(reserva);
     }
     
 }

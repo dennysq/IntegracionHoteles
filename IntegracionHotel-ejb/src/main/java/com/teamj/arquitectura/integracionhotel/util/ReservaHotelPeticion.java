@@ -5,8 +5,8 @@
  */
 package com.teamj.arquitectura.integracionhotel.util;
 
+import java.math.BigDecimal;
 import java.util.Date;
-import java.util.List;
 
 /**
  *
@@ -15,22 +15,24 @@ import java.util.List;
 public class ReservaHotelPeticion {
     private Integer codigoHotel;
     private String identificacion;
+    private BigDecimal precio;
     private String nombreUsuario;
-    private List<Integer> codigosHabitacion;
-    private Date fechaEntrada;
-    private Date fechaSalida;
+    private Integer codigoHabitacion;
+    private String fechaEntrada;
+    private String fechaSalida;
 
     public ReservaHotelPeticion() {
     }
 
-    public ReservaHotelPeticion(Integer codigoHotel, String identificacion, String nombreUsuario, List<Integer> codigosHabitacion, Date fechaEntrada, Date fechaSalida) {
-        this.codigoHotel = codigoHotel;
-        this.identificacion = identificacion;
-        this.nombreUsuario = nombreUsuario;
-        this.codigosHabitacion = codigosHabitacion;
-        this.fechaEntrada = fechaEntrada;
-        this.fechaSalida = fechaSalida;
+    public BigDecimal getPrecio() {
+        return precio;
     }
+
+    public void setPrecio(BigDecimal precio) {
+        this.precio = precio;
+    }
+
+  
 
     public Integer getCodigoHotel() {
         return codigoHotel;
@@ -56,30 +58,29 @@ public class ReservaHotelPeticion {
     public void setNombreUsuario(String nombreUsuario) {
         this.nombreUsuario = nombreUsuario;
     }
-    
-    public List<Integer> getCodigosHabitacion() {
-        return codigosHabitacion;
+
+    public Integer getCodigoHabitacion() {
+        return codigoHabitacion;
     }
 
-    public void setCodigosHabitacion(List<Integer> codigosHabitacion) {
-        this.codigosHabitacion = codigosHabitacion;
+    public void setCodigoHabitacion(Integer codigoHabitacion) {
+        this.codigoHabitacion = codigoHabitacion;
     }
 
-    public Date getFechaEntrada() {
+    public String getFechaEntrada() {
         return fechaEntrada;
     }
 
-    public void setFechaEntrada(Date fechaEntrada) {
+    public void setFechaEntrada(String fechaEntrada) {
         this.fechaEntrada = fechaEntrada;
     }
 
-    public Date getFechaSalida() {
+    public String getFechaSalida() {
         return fechaSalida;
     }
 
-    public void setFechaSalida(Date fechaSalida) {
+    public void setFechaSalida(String fechaSalida) {
         this.fechaSalida = fechaSalida;
     }
-    
     
 }
