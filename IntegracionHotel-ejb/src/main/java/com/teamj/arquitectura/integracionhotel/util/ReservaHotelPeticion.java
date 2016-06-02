@@ -20,6 +20,25 @@ public class ReservaHotelPeticion {
     private Integer codigoHabitacion;
     private String fechaEntrada;
     private String fechaSalida;
+    private boolean conDesayuno;
+    private Integer numPersonas;
+
+    public boolean isConDesayuno() {
+        return conDesayuno;
+    }
+
+    public void setConDesayuno(boolean conDesayuno) {
+        this.conDesayuno = conDesayuno;
+    }
+
+    public Integer getNumPersonas() {
+        return numPersonas;
+    }
+
+    public void setNumPersonas(Integer numPersonas) {
+        this.numPersonas = numPersonas;
+    }
+            
 
     public ReservaHotelPeticion() {
     }

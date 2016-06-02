@@ -126,16 +126,16 @@
                         </goals>
                         <configuration>
                             <wsdlFiles>
-                                <wsdlFile>192.168.100.20_8080/ServicioWebHotel/ServicioWebHotel.wsdl</wsdlFile>
+                                <wsdlFile>localhost_8082/Hotel-web/HotelWS.wsdl</wsdlFile>
                             </wsdlFiles>
                             <packageName></packageName>
                             <vmArgs>
                                 <vmArg>-Djavax.xml.accessExternalSchema=all</vmArg>
                             </vmArgs>
-                            <wsdlLocation>http://192.168.100.20:8080/ServicioWebHotel/ServicioWebHotel?WSDL</wsdlLocation>
-                            <staleFile>${project.build.directory}/jaxws/stale/ServicioWebHotel.stale</staleFile>
+                            <wsdlLocation>http://localhost:8082/Hotel-web/HotelWS?wsdl</wsdlLocation>
+                            <staleFile>${project.build.directory}/jaxws/stale/HotelWS.stale</staleFile>
                         </configuration>
-                        <id>wsimport-generate-ServicioWebHotel</id>
+                        <id>wsimport-generate-HotelWS</id>
                         <phase>generate-sources</phase>
                     </execution>
                 </executions>

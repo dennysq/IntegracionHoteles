@@ -5,8 +5,9 @@
  */
 package com.teamj.arquitectura.integracionhotel.services;
 
+import com.mycompany.ws.HotelWS_Service;
 import com.mycompany.ws.RespDisponibilidad;
-import com.mycompany.ws.ServicioWebHotel_Service;
+import com.mycompany.ws.HotelWS;
 import com.teamj.arquitectura.integracionhotel.dao.ConsultaDAO;
 import com.teamj.arquitectura.integracionhotel.dao.EmpresaDAO;
 import com.teamj.arquitectura.integracionhotel.dao.ReservaDAO;
@@ -15,15 +16,12 @@ import com.teamj.arquitectura.integracionhotel.model.Empresa;
 import com.teamj.arquitectura.integracionhotel.model.Reservas;
 import com.teamj.arquitectura.integracionhotel.util.ConsultaHotelesRequest;
 import com.teamj.arquitectura.integracionhotel.util.ConsultaHotelesResponse;
-import com.teamj.arquitectura.integracionhotel.util.Habitacion;
 import com.teamj.arquitectura.integracionhotel.util.ReservaHotelPeticion;
 import com.teamj.arquitectura.integracionhotel.util.ReservaHotelRespuesta;
-import java.math.BigDecimal;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -41,7 +39,7 @@ import javax.xml.ws.WebServiceRef;
 public class ConsultaServicio {
 
     @WebServiceRef
-    private ServicioWebHotel_Service service;
+    private HotelWS_Service service_1;
 
     @EJB
     private ConsultaDAO consultaDAO;
@@ -67,7 +65,9 @@ public class ConsultaServicio {
                 consulta.setConsulta("Pruebas");
                 consultaDAO.insert(consulta);
                 try { // Call Web Service Operation
-                    com.mycompany.ws.ServicioWebHotel port = service.getServicioWebHotelPort();
+
+                    // Call Web Service Operation
+                    com.mycompany.ws.HotelWS port = service_1.getHotelWSPort();
                     // TODO initialize WS operation arguments here
                     java.lang.String fechaEntrada = con.getFechaEntrada();
                     java.lang.String fechaSalida = con.getFechaSalida();
@@ -76,6 +76,7 @@ public class ConsultaServicio {
                     // TODO process result here
                     java.util.List<com.mycompany.ws.RespDisponibilidad> result = port.consultaDisponibilidadDeHabitaciones(fechaEntrada, fechaSalida, totalPersonas, incluyeDesayuno);
                     System.out.println("Result = " + result);
+
                     for (RespDisponibilidad r : result) {
                         ConsultaHotelesResponse consultaResponse = new ConsultaHotelesResponse();
                         consultaResponse.setCodigoHotel(listaEmpresas.get(i).getId());
@@ -88,6 +89,7 @@ public class ConsultaServicio {
                     }
                 } catch (Exception ex) {
                     // TODO handle custom exceptions here
+                    System.out.println("" + ex);
                 }
             }
         }
@@ -102,22 +104,39 @@ public class ConsultaServicio {
             empresaTemp = empresaDAO.findById(peticion.getCodigoHotel(), false);
             //List<ConsultaHotelesResponse> respuestaConsulta = new ArrayList();
             //llamada a web service
-            reservaRespuesta.setEstado(true);
-            if (reservaRespuesta.isEstado()) {
-                Reservas res = new Reservas();
-                res.setCodigoEmpresa(empresaTemp);
-                res.setOrigen(peticion.getNombreUsuario());
-                res.setPrecioTotal(peticion.getPrecio());//
-                res.setNumReserva(15);
-                SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
-                res.setFechaEntrada(sdf.parse(peticion.getFechaEntrada()));
-                res.setFechaSalida(sdf.parse(peticion.getFechaSalida()));
-                reservaDAO.insert(res);
-            }
-        } catch (ParseException ex) {
-            Logger.getLogger(ConsultaServicio.class.getName()).log(Level.SEVERE, null, ex);
-        }
 
+            try { // Call Web Service Operation
+                com.mycompany.ws.HotelWS port = service_1.getHotelWSPort();
+                // TODO initialize WS operation arguments here
+
+                // TODO process result here
+                com.mycompany.ws.RespReserva result = port.reservaHabitacionHotel(peticion.getFechaEntrada(),
+                        peticion.getFechaSalida(), peticion.getNumPersonas(), peticion.isConDesayuno(), peticion.getPrecio(), peticion.getCodigoHabitacion(), peticion.getNombreUsuario(), peticion.getIdentificacion());
+                System.out.println("Result = " + result);
+
+                reservaRespuesta.setEstado(result.isEstado());
+
+                if (reservaRespuesta.isEstado()) {
+                    reservaRespuesta.setNumeroReserva(result.getCodigoReserva());
+                    Reservas res = new Reservas();
+                    res.setCodigoEmpresa(empresaTemp);
+                    res.setOrigen(peticion.getNombreUsuario());
+                    res.setPrecioTotal(peticion.getPrecio());//
+                    res.setNumReserva(result.getCodigoReserva());
+                    SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+                    res.setFechaEntrada(sdf.parse(peticion.getFechaEntrada()));
+                    res.setFechaSalida(sdf.parse(peticion.getFechaSalida()));
+                    reservaDAO.insert(res);
+                } else {
+                    reservaRespuesta.setMensajeError(result.getMensajeError());
+
+                }
+            } catch (ParseException ex) {
+                Logger.getLogger(ConsultaServicio.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        } catch (Exception ex) {
+            // TODO handle custom exceptions here
+        }
         return reservaRespuesta;
     }
 }

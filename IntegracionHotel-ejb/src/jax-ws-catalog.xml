@@ -2,4 +2,8 @@
 <catalog xmlns="urn:oasis:names:tc:entity:xmlns:xml:catalog" prefer="system">
     <system systemId="http://192.168.100.20:8080/ServicioWebHotel/ServicioWebHotel?WSDL" uri="wsdl/192.168.100.20_8080/ServicioWebHotel/ServicioWebHotel.wsdl"/>
     <system systemId="http://192.168.100.20:8080/ServicioWebHotel/ServicioWebHotel?xsd=1" uri="wsdl/192.168.100.20_8080/ServicioWebHotel/ServicioWebHotel.xsd_1.xsd"/>
+    <system systemId="http://localhost:8082/ServicioWebHotel/ServicioWebHotel?WSDL" uri="wsdl/localhost_8082/ServicioWebHotel/ServicioWebHotel.wsdl"/>
+    <system systemId="http://localhost:8082/ServicioWebHotel/ServicioWebHotel?xsd=1" uri="wsdl/localhost_8082/ServicioWebHotel/ServicioWebHotel.xsd_1.xsd"/>
+    <system systemId="http://localhost:8082/Hotel-web/HotelWS?wsdl" uri="wsdl/localhost_8082/Hotel-web/HotelWS.wsdl"/>
+    <system systemId="http://localhost:8082/Hotel-web/HotelWS?xsd=1" uri="wsdl/localhost_8082/Hotel-web/HotelWS.xsd_1.xsd"/>
 </catalog>
